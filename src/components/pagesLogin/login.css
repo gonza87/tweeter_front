@@ -1,0 +1,47 @@
+/* login.css */
+
+.container {
+  display: flex;
+}
+h1 {
+  color: black;
+}
+.subTitle {
+  color: black;
+}
+
+.column5 {
+  display: flex;
+  flex-direction: column;
+  background: #28384c;
+ /*  width: 462px;
+  height: 797px; */
+ 
+  flex-shrink: 0;
+  padding: 20px;
+}
+
+.column7 {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  color: gray;
+  background-color: white;
+ /*  width: 616px;
+  height: 798px; */
+  flex-shrink: 0;
+}
+
+.buttonLogin {
+  width: 397px;
+  height: 47px;
+  flex-shrink: 0;
+  border-radius: 40px;
+  background: #1d9bf0;
+}
+
+ 
+
+.textCol5 {
+  color: white;
+}
