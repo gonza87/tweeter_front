@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
-
+import Button from 'react-bootstrap/Button';
 
 import "./home.css";
 
@@ -47,7 +47,7 @@ const TweetList = () => {
     
     <div className="container-tw">
       <div className="row">
-        <div className="col-2">
+        <div className="col-2 d-flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="52"
@@ -80,6 +80,7 @@ const TweetList = () => {
               fill="white"
             />
           </svg>
+         <div className='align-self-end mb-2'><Button variant="danger">Logout</Button>{' '}</div>
         </div>
 
         <div className="col-6">
