@@ -98,13 +98,13 @@ const TweetList = () => {
               <ListGroup.Item key={index} className="tweet-item">
                 <div className="tweet-content-container">
                   <img
-                    src="/public/Sin título1.png"
+                    src={tweet.user.photo}
                     alt="User Avatar"
                     className="user-avatar circular-image"
                   />
                   <div className="tweet-info">
                     <div className="tweet-header">
-                      <strong>{tweet.userId}</strong> @{tweet.text}
+                      <strong>{tweet.user.firstname +" "+tweet.user.lastname}</strong> @{tweet.user.username}
                       {/* {getFormattedTimestamp(tweet.date)} */}
                     </div>
                     <div className="tweet-content">
