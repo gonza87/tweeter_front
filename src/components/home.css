@@ -114,3 +114,10 @@ line-height: normal;
 .tweet-content {
   /* Estilos para el contenido del tweet */
 }
+
+.perfilHome{
+  color: white;
+}
+.perfilHome p{
+  color: #647788
+}

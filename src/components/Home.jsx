@@ -1,5 +1,6 @@
 //import React from "react";
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -9,8 +10,10 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 
 import "./home.css";
+import { setUser } from '../redux/userReducer';
 
 const TweetList = () => {
+  const dispatch = useDispatch();
   const [list, setList] = useState([]);
   const token = useSelector ((state) => state.user.token);
   //const username = useSelector ((state) => state.user.username);
@@ -80,7 +83,13 @@ const TweetList = () => {
               fill="white"
             />
           </svg>
-         <div className='align-self-end mb-2'><Button variant="danger">Logout</Button>{' '}</div>
+         <div className='align-self-end mb-2'>
+          <Button variant="danger" onClick={()=>{
+            console.log("click")
+            dispatch(setUser(null));
+            //navigate("/login");
+          }}>Logout</Button>{' '}
+         </div>
         </div>
 
         <div className="col-6">
@@ -92,8 +101,21 @@ const TweetList = () => {
                 alt="portadaImg"
               />
             </div>
+           
+            <div className='row perfilHome'>
+                
+                <div className='col-6'>
+                
+                  <h3>Home</h3>
+                  <p>What´s happening?</p>
+                </div>
+                <div className='col-6 d-flex justify-content-end'>
+                  <div><Button variant="primary" className='homeTweet'>Tweet</Button>{' '}</div>
+                 
+                </div>
+                <div className='col-12 mb-4'></div>
 
-            <br />
+            </div>
             
             {list.map((tweet, index) => (
               <ListGroup.Item key={index} className="tweet-item">
