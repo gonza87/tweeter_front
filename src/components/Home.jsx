@@ -7,12 +7,19 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
+import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
 import "./home.css";
 import { setUser } from '../redux/userReducer';
 
 const TweetList = () => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [inputTweetText, setInputTweetText] = useState("");
+
   const dispatch = useDispatch();
   const [list, setList] = useState([]);
   const token = useSelector ((state) => state.user.token);
@@ -109,13 +116,46 @@ const TweetList = () => {
                   <h3>Home</h3>
                   <p>What´s happening?</p>
                 </div>
-                <div className='col-6 d-flex justify-content-end'>
-                  <div><Button variant="primary" className='homeTweet'>Tweet</Button>{' '}</div>
-                 
-                </div>
-                <div className='col-12 mb-4'></div>
-
+                <div className='col-6 d-flex justify-content-end'>                  
+                  <div><Button variant="primary" onClick={handleShow}>Tweet</Button></div>
+                  
+            
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                <Modal.Title>Nueva Tweet</Modal.Title>
+                </Modal.Header>
+                
+                
+        <form onSubmit={(event)=>{
+          event.preventDefault();
+          
+        }}>
+          <div className='p-1'>
+            <input value={inputTweetText} 
+            type="text" 
+            className="form-control mb-1 mt-1" 
+            placeholder="Ingrese Tweet"
+            onChange={(event)=> setInputTweetText(event.target.value)} 
+            />
+            <div className='d-flex justify-content-between mt-2'>
+              <Button type="submit" variant="primary">
+                    Crear
+                </Button>
+                <Button variant="secondary" onClick={handleClose}>
+                    Cancelar
+                </Button>
             </div>
+            
+          </div>
+        
+        </form>
+                
+                
+            </Modal>
+
+      
+                </div>
+              </div>
             
             {list.map((tweet, index) => (
               <ListGroup.Item key={index} className="tweet-item">
