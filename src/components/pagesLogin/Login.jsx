@@ -66,7 +66,7 @@ function Login() {
           </svg>
           <h2 className="textCol5">Hey! Nice to see you again.</h2>
         </div>
-        <div className="col-5 p-5 loginDerecha">
+        <div className="col-md-5 col-sm-12 p-5 loginDerecha">
         <h1>Login</h1>
         <p className="subTitle">Ready to start using X?</p>
         <form onSubmit={handleSubmit}>
