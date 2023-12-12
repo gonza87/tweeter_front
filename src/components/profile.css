@@ -75,7 +75,7 @@
 }
 .tweet-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: normal;
   margin-top: 8px;
 }
 
