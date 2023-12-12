@@ -3,7 +3,7 @@ import { Form, InputGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/userReducer";
 import { useNavigate, Link } from "react-router-dom";
-
+import Button from 'react-bootstrap/Button';
 import axios from "axios";
 
 import "./login.css";
@@ -50,28 +50,28 @@ function Login() {
 
   return (
     <div className="container">
-      <div className="row"></div>
-      <div className="column5">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="56"
-          height="51"
-          viewBox="0 0 56 51"
-          fill="none"
-        >
-          <path
-            d="M44.1033 0H52.6903L33.9302 21.6031L56 51H38.7195L25.1848 33.1709L9.69805 51H1.10583L21.1716 27.8931L0 0H17.7192L29.9534 16.2965L44.1033 0ZM41.0895 45.8215H45.8477L15.1337 4.90646H10.0277L41.0895 45.8215Z"
-            fill="white"
-          />
-        </svg>
-        <h2 className="textCol5">Hey! Nice to see you again.</h2>
-      </div>
-      <div className="column7">
+      <div className="row">
+        <div className="col-7 loginIzquierda tex-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="56"
+            height="51"
+            viewBox="0 0 56 51"
+            fill="none"
+          >
+            <path
+              d="M44.1033 0H52.6903L33.9302 21.6031L56 51H38.7195L25.1848 33.1709L9.69805 51H1.10583L21.1716 27.8931L0 0H17.7192L29.9534 16.2965L44.1033 0ZM41.0895 45.8215H45.8477L15.1337 4.90646H10.0277L41.0895 45.8215Z"
+              fill="white"
+            />
+          </svg>
+          <h2 className="textCol5">Hey! Nice to see you again.</h2>
+        </div>
+        <div className="col-5 p-5 loginDerecha">
         <h1>Login</h1>
         <p className="subTitle">Ready to start using X?</p>
         <form onSubmit={handleSubmit}>
           <Form.Group>
-            <InputGroup size="lg">
+            <InputGroup size="lg" className="mb-3">
               <Form.Control
                 type="text"
                 name="emailOrUsername"
@@ -81,7 +81,7 @@ function Login() {
               />
             </InputGroup>
           </Form.Group>
-          <br />
+          
           <Form.Group>
             <InputGroup size="lg">
               <Form.Control
@@ -93,16 +93,18 @@ function Login() {
               />
             </InputGroup>
           </Form.Group>
-          <br />
-          <br />
-          <button className="buttonLogin" type="submit">
-            Login
-          </button>
+          
+          
+          <Button variant="primary" type="submit" className="btnLogin mt-4">Login</Button>{' '}
+          
         </form>
-        <p>
+        <p className="text-center mt-5">
           Don't have an account? <a><Link to="/">Sign up</Link></a>
         </p>
       </div>
+      </div>
+      
+      
     </div>
   );
 }
