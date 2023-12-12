@@ -188,7 +188,10 @@ const TweetList = () => {
                                  .then(response => {
                             //       // Actualiza el estado para eliminar el tweet eliminado
                             //       //setUserTweets(prevTweets => prevTweets.filter(prevTweets => prevTweets.id !== tweet.id));
-                                 
+                            const updatedList = [...list];
+                            const updatedTweet = { ...tweet, likeCount: response.data };
+                            updatedList[index] = updatedTweet;
+                            setList(updatedList);
                                    console.log (response.data);
                                   
                                   
@@ -203,6 +206,7 @@ const TweetList = () => {
                             console.log(userTokenId)
                           }}
                         />
+                        <span className='colorCount'>{tweet.likeCount}</span>
                         
                       </div>
                     </div>
