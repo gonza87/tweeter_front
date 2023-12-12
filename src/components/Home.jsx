@@ -23,8 +23,10 @@ const TweetList = () => {
   const dispatch = useDispatch();
   const [list, setList] = useState([]);
   const token = useSelector ((state) => state.user.token);
+  const userTokenId = useSelector ((state) => state.user.userid);
   //const username = useSelector ((state) => state.user.username);
   console.log("token: "+ token)
+  console.log("user id: "+ userTokenId)
   //console.log("username: "+ username)
   
   const apiUrl = 'http://localhost:3000/tweet';
@@ -176,7 +178,30 @@ const TweetList = () => {
                         <FontAwesomeIcon
                           icon={faHeart}
                           className="action-icon left"
-                          onClick={() => handleLikeTweet(index)}
+                          onClick={()=>{
+                             const likeUrl = `http://localhost:3000/tweet/${tweet.id}/likes`
+                             const requestBody = {
+                              userId: userTokenId,
+                              
+                            };
+                             axios.post(likeUrl, requestBody, config)
+                                 .then(response => {
+                            //       // Actualiza el estado para eliminar el tweet eliminado
+                            //       //setUserTweets(prevTweets => prevTweets.filter(prevTweets => prevTweets.id !== tweet.id));
+                                 
+                                   console.log (response.data);
+                                  
+                                  
+                                 })
+                                 .catch(error => {
+                            //       // Manejar errores
+                                   console.error('Error en la solicitud:', error.message);
+                                 });
+                            console.log(tweet)
+                            console.log("click")
+                            console.log(config)
+                            console.log(userTokenId)
+                          }}
                         />
                         
                       </div>
