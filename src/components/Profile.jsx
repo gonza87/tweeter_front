@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faHeart } from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
+import Swal from 'sweetalert2'
 import "./profile.css";
 
 const Profile = () => {
@@ -179,22 +180,39 @@ const Profile = () => {
           <p className="tipoDos">#LifeInMars</p>
           <p className="tipoUno">97.5K Tweets</p>
           <Button onClick={()=>{
-            const deleteUserUrl = `http://localhost:3000/users/`
-            axios.delete(deleteUserUrl, config)
-                .then(response => {
-                  // Actualiza el estado para eliminar el tweet eliminado
-                  //setUserTweets(prevTweets => prevTweets.filter(prevTweets => prevTweets.id !== tweet.id));
-                 
-                  console.log (response.data);
-                  navigate("/login");
+            Swal.fire({
+              title: "Are you sure?",
+              text: "You won't be able to revert this!",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+              if (result.isConfirmed) {
+                 const deleteUserUrl = `http://localhost:3000/users/`
+                  axios.delete(deleteUserUrl, config)
+                      .then(response => {
+                       
+                      
+                        console.log (response.data);
+                        navigate("/");
+                        
+                      })
+                      .catch(error => {
+                        // Manejar errores
+                        console.error('Error en la solicitud:', error.message);
+                      });
                   
-                })
-                .catch(error => {
-                  // Manejar errores
-                  console.error('Error en la solicitud:', error.message);
-                });
-            console.log("click dar baja")
-          }} variant="danger">Darme de baja</Button>{' '}
+                      Swal.fire({
+                        title: "Deleted!",
+                        text: "Your user has been deleted.",
+                        icon: "success"
+                      });
+              }
+            });
+           
+          }} variant="danger">Delete my account</Button>{' '}
         </div>
       </div>
     </div>
