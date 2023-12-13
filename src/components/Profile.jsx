@@ -2,14 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 import { ListGroup } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faHeart } from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 import "./profile.css";
 
 const Profile = () => {
-
+  const navigate = useNavigate();
   const [userTweets, setUserTweets] = useState([]);
   const [user, setUser]= useState([]);
   const token = useSelector ((state) => state.user.token);
@@ -177,6 +178,23 @@ const Profile = () => {
           <p className="tipoUno">News · Trending</p>
           <p className="tipoDos">#LifeInMars</p>
           <p className="tipoUno">97.5K Tweets</p>
+          <Button onClick={()=>{
+            const deleteUserUrl = `http://localhost:3000/users/`
+            axios.delete(deleteUserUrl, config)
+                .then(response => {
+                  // Actualiza el estado para eliminar el tweet eliminado
+                  //setUserTweets(prevTweets => prevTweets.filter(prevTweets => prevTweets.id !== tweet.id));
+                 
+                  console.log (response.data);
+                  navigate("/login");
+                  
+                })
+                .catch(error => {
+                  // Manejar errores
+                  console.error('Error en la solicitud:', error.message);
+                });
+            console.log("click dar baja")
+          }} variant="danger">Darme de baja</Button>{' '}
         </div>
       </div>
     </div>
