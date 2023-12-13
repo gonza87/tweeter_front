@@ -51,11 +51,9 @@ function Register() {
   };
   
   return (
-    <div className="container">
-      <div className="row"></div>
-      <div className="column5 col-5">
-        <div className="column5">
-          <svg
+    <div className="container">      
+      <div className="column1 col-7">        
+          <svg className="iconoX"
             xmlns="http://www.w3.org/2000/svg"
             width="56"
             height="51"
@@ -67,13 +65,13 @@ function Register() {
               fill="white"
             />
           </svg>
-          <h3 className="textCol5">Hi! Welcome to X Clone.</h3>
-        </div>
+          <h3 className="textCol5">Hi! Welcome to X Clone.</h3>        
       </div>
-      <div className="column7 col-7">
-        <h1>Sign up</h1>
+      <div className="column2 col-5">
+        <h1 className="signUp">Sign up</h1>
         <p className="subTitle">Create an account and start using X</p>
         <form onSubmit={handleSubmit}>
+          <div className="form-group1">
           <div className="form-group">
             <InputGroup size="lg">
               <Form.Control
@@ -85,7 +83,7 @@ function Register() {
               />
             </InputGroup>
           </div>
-          <br />
+          
           <div className="form-group">
             <InputGroup size="lg">
               <Form.Control
@@ -97,7 +95,7 @@ function Register() {
               />
             </InputGroup>
           </div>
-          <br />
+          
           <div className="form-group">
             <InputGroup size="lg">
               <Form.Control
@@ -109,7 +107,7 @@ function Register() {
               />
             </InputGroup>
           </div>
-          <br />
+          
           <div className="form-group">
             <InputGroup size="lg">
               <Form.Control
@@ -120,8 +118,7 @@ function Register() {
                 onChange={handleChange}
               />
             </InputGroup>
-          </div>
-          <br />
+          </div>          
 
           <div className="form-group">
             <InputGroup size="lg">
@@ -132,9 +129,7 @@ function Register() {
                 onChange={handleChange}
               />
             </InputGroup>
-          </div>
-
-          <br />
+          </div>          
 
           <div className="form-group">
             <InputGroup size="lg">
@@ -147,14 +142,19 @@ function Register() {
               />
             </InputGroup>
           </div>
+          </div>
           <br />
+          <div className="button">        
           <button className="buttonLogin" type="submit">
           Sign up
           </button>
+          </div>            
         </form>
 
         <p>
-          Don't have an account? <a><Link to="/profile">Sign in</Link></a>
+          <div className="pp">
+          Already have an account?<a><Link to="/profile">Sign in</Link></a>
+          </div>
         </p>
       </div>
     </div>

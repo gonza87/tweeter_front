@@ -1,43 +1,83 @@
 /* register.css */
 
-/*.container {
-  display: flex;
-}*/
-h1 {
-  color: black;
-}
-.subTitle {
-  color: black;
+.container {
+  display: flex;  
 }
 
-.column7 {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  color: gray;
-  background-color: white;
-  width: 616px;
-  height: 816px;
-  flex-shrink: 0;
+.iconoX {
+  position: absolute;
+  top: 50px;
+  left: 50px;
 }
 
-.buttonLogin {
-  width: 397px;
-  height: 47px;
-  flex-shrink: 0;
-  border-radius: 40px;
-  background: #1d9bf0;
+.pp {
+  display: flex;  
+  justify-content: center;
+  color: black;  
 }
 
-.column5 {
+.column1 {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end; 
   align-items: center;
   width: 496px;
+  border-bottom-left-radius: 2%;
+  border-top-left-radius: 2%;
+  background-color: #28384c;
+}
+
+.column2 {
+  display: flex;
+  flex-direction: column;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  color: gray;
+  background-color: white;
+  width: 616px;
+  height: 816px;
+  flex-shrink: 0;
+  border-bottom-right-radius: 2%;
+  border-top-right-radius: 2%;  
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;  
+}
+
+.buttonLogin {  
+  width: 400px;
+  height: 50px;  
+  border-radius: 40px;
+  background: #1d9bf0;
+  color: white;
+  border: 0;  
 }
 
 .textCol5 {
   color: white;
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+}
+
+.signUp {
+  color: black;
+  font-size: 30px;
+}
+
+.form-group1 {
+  padding-top: 10px;
+  padding-bottom: 20px;  
+}
+
+.form-group {
+  padding-top: 15px;  
 }
