@@ -31,6 +31,8 @@ const TweetList = () => {
   
   const apiUrl = 'http://localhost:3000/tweet';
 
+  const createTweetUrl = 'http://localhost:3000/tweet/tweet/create';
+
   const config = {
     headers: {
       'Authorization': `Bearer ${token}`,
@@ -38,7 +40,24 @@ const TweetList = () => {
     },
   };
   
-  
+  const handleCreateTweet = () => {
+    const newTweet = {
+      text: inputTweetText,
+    };
+
+    axios.post(createTweetUrl, newTweet, config)
+      .then(response => {
+        console.log(response.data);
+        setList(prevList => [response.data, ...prevList]);
+        handleClose();
+      })
+      .catch(error => {
+        console.error('Error en la solicitud:', error.message);
+      });
+  };
+
+
+
 
   useEffect(()=>{
     axios.get(apiUrl, config)
@@ -122,7 +141,7 @@ const TweetList = () => {
                   <div><Button variant="primary" onClick={handleShow}>Tweet</Button></div>
                   
             
-            <Modal show={show} onHide={handleClose}>
+            {/* <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                 <Modal.Title>Nueva Tweet</Modal.Title>
                 </Modal.Header>
@@ -153,8 +172,34 @@ const TweetList = () => {
         </form>
                 
                 
-            </Modal>
-
+            </Modal> */}
+<Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Nuevo Tweet</Modal.Title>
+                    </Modal.Header>
+                    <form onSubmit={(event) => {
+                      event.preventDefault();
+                      handleCreateTweet();
+                    }}>
+                      <div className='p-1'>
+                        <input
+                          value={inputTweetText}
+                          type="text"
+                          className="form-control mb-1 mt-1"
+                          placeholder="Ingrese Tweet"
+                          onChange={(event) => setInputTweetText(event.target.value)}
+                        />
+                        <div className='d-flex justify-content-between mt-2'>
+                          <Button type="submit" variant="primary">
+                            Crear
+                          </Button>
+                          <Button variant="secondary" onClick={handleClose}>
+                            Cancelar
+                          </Button>
+                        </div>
+                      </div>
+                    </form>
+                  </Modal>
       
                 </div>
               </div>
