@@ -51,7 +51,7 @@ function Login() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-7 loginIzquierda tex-center">
+        <div className="col-7 loginIzquierda tex-center" style={{ backgroundColor: '#28384c' }}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="56"
@@ -64,7 +64,7 @@ function Login() {
               fill="white"
             />
           </svg>
-          <h2 className="textCol5">Hey! Nice to see you again.</h2>
+          <h2 className="">Hey! Nice to see you again.</h2>
         </div>
         <div className="col-md-5 col-sm-12 p-5 loginDerecha">
         <h1>Login</h1>

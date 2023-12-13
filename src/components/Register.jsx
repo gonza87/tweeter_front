@@ -51,7 +51,7 @@ function Register() {
   };
   
   return (
-    <div className="container">      
+    <div className="containerProfile">      
       <div className="column1 col-7">        
           <svg className="iconoX"
             xmlns="http://www.w3.org/2000/svg"
