@@ -212,7 +212,7 @@ const Profile = () => {
               }
             });
            
-          }} variant="danger">Delete my account</Button>{' '}
+          }} variant="danger" className='btnDeleteAccount'>Delete my account</Button>{' '}
         </div>
       </div>
     </div>
