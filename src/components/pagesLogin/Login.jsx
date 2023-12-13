@@ -5,7 +5,7 @@ import { setUser } from "../../redux/userReducer";
 import { useNavigate, Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
-
+import Swal from 'sweetalert2'
 import "./login.css";
 
 function Login() {
@@ -29,7 +29,13 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Lógica de inicio de sesión aquí
-
+    if (!loginData.emailOrUsername || !loginData.password) {
+      Swal.fire({
+        text: "Complete all fields please",
+        icon: "warning"
+      });
+      return;
+    }
    
 
     axios
