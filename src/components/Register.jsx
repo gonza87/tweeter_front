@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Form, InputGroup } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-
+import Swal from 'sweetalert2'
 import "./register.css";
 
 function Register() {
@@ -37,7 +37,14 @@ function Register() {
       photo: "es un imagen",
       password: formData.password,
     };
-      
+    if (!formData.firstName || !formData.lastName || !formData.username || !formData.email || !formData.password) {
+      Swal.fire({
+        text: "Complete all fields please",
+        icon: "warning"
+      });
+      return;
+    } 
+    
     axios
       .post(apiUrl, userData)
       .then((response) => {
@@ -153,7 +160,7 @@ function Register() {
 
         <p>
           <div className="pp">
-          Already have an account?<a><Link to="/profile">Sign in</Link></a>
+          Already have an account?<a><Link to="/login">Sign in</Link></a>
           </div>
         </p>
       </div>

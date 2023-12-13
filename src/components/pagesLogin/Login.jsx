@@ -38,12 +38,16 @@ function Login() {
     }
    
 
-    axios
-      .post(apiUrl, loginData)
+    
+      axios.post(apiUrl, loginData)
       .then((response) => {
         dispatch(setUser(response.data));
         navigate("/home");
         console.log("Respuesta exitosa:", response.data);
+        if(response.data === "Usuario no existe"){
+          navigate("/")
+        } 
+        
       })
       .catch((error) => {
         console.error("Error al enviar datos:", error);
