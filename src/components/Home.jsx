@@ -1,81 +1,79 @@
 //import React from "react";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import axios from 'axios';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import axios from "axios";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 import "./home.css";
-import { setUser } from '../redux/userReducer';
+import { setUser } from "../redux/userReducer";
 
 const TweetList = () => {
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => [setShow(false),setInputTweetText("")];
   const handleShow = () => setShow(true);
   const [inputTweetText, setInputTweetText] = useState("");
 
   const dispatch = useDispatch();
   const [list, setList] = useState([]);
-  const token = useSelector ((state) => state.user.token);
-  const userTokenId = useSelector ((state) => state.user.userid);
+  const token = useSelector((state) => state.user.token);
+  const userTokenId = useSelector((state) => state.user.userid);
   //const username = useSelector ((state) => state.user.username);
-  console.log("token: "+ token)
-  console.log("user id: "+ userTokenId)
+  console.log("token: " + token);
+  console.log("user id: " + userTokenId);
   //console.log("username: "+ username)
-  
-  const apiUrl = 'http://localhost:3000/tweet';
 
-  const createTweetUrl = 'http://localhost:3000/tweet/tweet/create';
+  const apiUrl = "http://localhost:3000/tweet";
+
+  const createTweetUrl = "http://localhost:3000/tweet/tweet/create";
 
   const config = {
     headers: {
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json', // Puedes ajustar el tipo de contenido según las necesidades de tu API
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json", // Puedes ajustar el tipo de contenido según las necesidades de tu API
     },
   };
-  
+
   const handleCreateTweet = () => {
     const newTweet = {
       text: inputTweetText,
     };
 
-    axios.post(createTweetUrl, newTweet, config)
-      .then(response => {
+    axios
+      .post(createTweetUrl, newTweet, config)
+      .then((response) => {
         console.log(response.data);
-        setList(prevList => [response.data, ...prevList]);
+        setList((prevList) => [response.data, ...prevList]);
         handleClose();
       })
-      .catch(error => {
-        console.error('Error en la solicitud:', error.message);
+      .catch((error) => {
+        console.error("Error en la solicitud:", error.message);
       });
   };
 
-
-
-
-  useEffect(()=>{
-    axios.get(apiUrl, config)
-    .then(response => {
-      // Manejar la respuesta exitosa
-      //console.log(response.data);
-       //const tweets = response.data
-       setList (response.data);
-      //console.log(list)
-    })
-    .catch(error => {
-      // Manejar errores
-      console.error('Error en la solicitud:', error.message);
-    });
-  },[]);
-  console.log(list)
+  useEffect(() => {
+    axios
+      .get(apiUrl, config)
+      .then((response) => {
+        // Manejar la respuesta exitosa
+        //console.log(response.data);
+        //const tweets = response.data
+        setList(response.data);
+        //console.log(list)
+      })
+      .catch((error) => {
+        // Manejar errores
+        console.error("Error en la solicitud:", error.message);
+      });
+  }, []);
+  console.log(list);
   return (
-    
     <div className="container-tw">
       <div className="row">
         <div className="col-2 d-flex">
@@ -86,17 +84,16 @@ const TweetList = () => {
             viewBox="0 0 52 233"
             fill="none"
           >
-           
             <path
               d="M37.4618 68.0546L26.5243 62.1304C26.3663 62.0448 26.1896 62 26.0101 62C25.8307 62 25.654 62.0448 25.496 62.1304L14.564 68.0546C14.3531 68.1704 14.1866 68.3532 14.0905 68.5743C13.9944 68.7954 13.9742 69.0423 14.033 69.2761C14.0919 69.51 14.2264 69.7177 14.4156 69.8664C14.6047 70.0152 14.8378 70.0967 15.0781 70.0982C15.2513 70.0982 15.4288 70.0569 15.5922 69.9678L16.3867 69.5376L18.1077 81.7598C18.3415 83.0787 19.5256 84 20.9868 84H31.0335C32.4947 84 33.6788 83.0787 33.9148 81.7316L35.6336 69.5365L36.4313 69.9689C36.6829 70.0959 36.9739 70.1195 37.2425 70.0346C37.5111 69.9498 37.7362 69.7633 37.87 69.5146C38.0038 69.2659 38.0358 68.9746 37.9592 68.7027C37.8825 68.4307 37.7033 68.1994 37.4596 68.0579L37.4618 68.0546ZM26.0101 76.8383C25.0772 76.8383 24.1824 76.4663 23.5227 75.8042C22.863 75.142 22.4924 74.2439 22.4924 73.3075C22.4924 72.371 22.863 71.4729 23.5227 70.8108C24.1824 70.1486 25.0772 69.7766 26.0101 69.7766C26.9431 69.7766 27.8379 70.1486 28.4976 70.8108C29.1573 71.4729 29.5279 72.371 29.5279 73.3075C29.5279 74.2439 29.1573 75.142 28.4976 75.8042C27.8379 76.4663 26.9431 76.8383 26.0101 76.8383Z"
               fill="white"
             />
             <Link to="/profile">
-            <circle cx="26" cy="140" r="28" fill="transparent" />
-            <path
-              d="M26.0001 132.989C27.4604 132.989 29.0954 132.827 30.1386 131.631C31.0159 130.625 31.3004 129.069 31.0073 126.88C30.5977 123.825 28.7257 122 26.0001 122C23.2745 122 21.4025 123.825 20.993 126.882C20.6998 129.069 20.9844 130.625 21.8616 131.631C22.9049 132.828 24.5398 132.989 26.0001 132.989ZM22.5945 127.097C22.7691 125.799 23.4427 123.622 26.0001 123.622C28.5576 123.622 29.2312 125.8 29.4057 127.097C29.6288 128.773 29.4672 129.938 28.9208 130.563C28.4304 131.126 27.5564 131.367 26.0001 131.367C24.4439 131.367 23.5698 131.126 23.0795 130.563C22.5331 129.938 22.3714 128.772 22.5945 127.097ZM34.9237 141.015C33.9786 137.201 30.3089 134.536 26.0001 134.536C21.6913 134.536 18.0217 137.201 17.0765 141.015C16.8911 141.763 17.0463 142.529 17.5022 143.113C17.9419 143.676 18.623 144 19.3699 144H32.6303C33.3772 144 34.0583 143.676 34.498 143.113C34.955 142.529 35.1091 141.764 34.9227 141.015H34.9237ZM33.2252 142.114C33.0894 142.287 32.8847 142.38 32.6303 142.38H19.3699C19.1166 142.38 18.9108 142.288 18.775 142.114C18.7009 142.014 18.6507 141.898 18.6283 141.775C18.6059 141.652 18.6118 141.526 18.6457 141.406C19.4109 138.318 22.4361 136.16 26.0001 136.16C29.5642 136.16 32.5894 138.317 33.3546 141.406C33.4192 141.668 33.3729 141.925 33.2252 142.114Z"
-              fill="white"
-            />
+              <circle cx="26" cy="140" r="28" fill="transparent" />
+              <path
+                d="M26.0001 132.989C27.4604 132.989 29.0954 132.827 30.1386 131.631C31.0159 130.625 31.3004 129.069 31.0073 126.88C30.5977 123.825 28.7257 122 26.0001 122C23.2745 122 21.4025 123.825 20.993 126.882C20.6998 129.069 20.9844 130.625 21.8616 131.631C22.9049 132.828 24.5398 132.989 26.0001 132.989ZM22.5945 127.097C22.7691 125.799 23.4427 123.622 26.0001 123.622C28.5576 123.622 29.2312 125.8 29.4057 127.097C29.6288 128.773 29.4672 129.938 28.9208 130.563C28.4304 131.126 27.5564 131.367 26.0001 131.367C24.4439 131.367 23.5698 131.126 23.0795 130.563C22.5331 129.938 22.3714 128.772 22.5945 127.097ZM34.9237 141.015C33.9786 137.201 30.3089 134.536 26.0001 134.536C21.6913 134.536 18.0217 137.201 17.0765 141.015C16.8911 141.763 17.0463 142.529 17.5022 143.113C17.9419 143.676 18.623 144 19.3699 144H32.6303C33.3772 144 34.0583 143.676 34.498 143.113C34.955 142.529 35.1091 141.764 34.9227 141.015H34.9237ZM33.2252 142.114C33.0894 142.287 32.8847 142.38 32.6303 142.38H19.3699C19.1166 142.38 18.9108 142.288 18.775 142.114C18.7009 142.014 18.6507 141.898 18.6283 141.775C18.6059 141.652 18.6118 141.526 18.6457 141.406C19.4109 138.318 22.4361 136.16 26.0001 136.16C29.5642 136.16 32.5894 138.317 33.3546 141.406C33.4192 141.668 33.3729 141.925 33.2252 142.114Z"
+                fill="white"
+              />
             </Link>
             <path
               d="M0 207C0 192.641 11.6406 181 26 181C40.3594 181 52 192.641 52 207C52 221.359 40.3594 233 26 233C11.6406 233 0 221.359 0 207Z"
@@ -113,37 +110,42 @@ const TweetList = () => {
               fill="white"
             />
           </svg>
-         <div className='align-self-end mb-2'>
-          <Button variant="danger" onClick={()=>{
-            console.log("click")
-            dispatch(setUser(null));
-            //navigate("/login");
-          }}>Logout</Button>{' '}
-         </div>
+          <div className="align-self-end mb-2">
+            <Button
+              variant="danger"
+              onClick={() => {
+                console.log("click");
+                dispatch(setUser(null));
+                //navigate("/login");
+              }}
+            >
+              Logout
+            </Button>{" "}
+          </div>
         </div>
 
         <div className="col-6">
           <ListGroup>
-            <div className="portada">
-              <img
-                className="portada"
-                src="/public/images.jpg"
-                alt="portadaImg"
-              />
-            </div>
-           
-            <div className='row perfilHome'>
-                
-                <div className='col-6'>
-                
-                  <h3>Home</h3>
-                  <p>What´s happening?</p>
+            <div className="row perfilHome">
+ 
+
+              <div className="col-12">
+                <h3>Home</h3>
+                <div className="tweet-item">
+                  <textarea
+                    value={inputTweetText}
+                    className="form-control mb-2"
+                    placeholder="What's happening?"
+                    onChange={(event) => setInputTweetText(event.target.value)}
+                  />
+                  <div className="d-flex justify-content-end align-items-end">
+                    <Button variant="primary" onClick={handleShow}>
+                      Tweet
+                    </Button>
+                  </div>
                 </div>
-                <div className='col-6 d-flex justify-content-end'>                  
-                  <div><Button variant="primary" onClick={handleShow}>Tweet</Button></div>
-                  
-            
-            {/* <Modal show={show} onHide={handleClose}>
+
+                {/* <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                 <Modal.Title>Nueva Tweet</Modal.Title>
                 </Modal.Header>
@@ -175,37 +177,40 @@ const TweetList = () => {
                 
                 
             </Modal> */}
-<Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Nuevo Tweet</Modal.Title>
-                    </Modal.Header>
-                    <form onSubmit={(event) => {
+                <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Nuevo Tweet</Modal.Title>
+                  </Modal.Header>
+                  <form
+                    onSubmit={(event) => {
                       event.preventDefault();
                       handleCreateTweet();
-                    }}>
-                      <div className='p-1'>
-                        <input
-                          value={inputTweetText}
-                          type="text"
-                          className="form-control mb-1 mt-1"
-                          placeholder="Ingrese Tweet"
-                          onChange={(event) => setInputTweetText(event.target.value)}
-                        />
-                        <div className='d-flex justify-content-between mt-2'>
-                          <Button type="submit" variant="primary">
-                            Crear
-                          </Button>
-                          <Button variant="secondary" onClick={handleClose}>
-                            Cancelar
-                          </Button>
-                        </div>
+                    }}
+                  >
+                    <div className="p-1">
+                      <input
+                        value={inputTweetText}
+                        type="text"
+                        className="form-control mb-1 mt-1"
+                        placeholder="Ingrese Tweet"
+                        onChange={(event) =>
+                          setInputTweetText(event.target.value)
+                        }
+                      />
+                      <div className="d-flex justify-content-between mt-2">
+                        <Button type="submit" variant="primary">
+                          Crear
+                        </Button>
+                        <Button variant="secondary" onClick={handleClose}>
+                          Cancelar
+                        </Button>
                       </div>
-                    </form>
-                  </Modal>
-      
-                </div>
+                    </div>
+                  </form>
+                </Modal>
               </div>
-            
+            </div>
+
             {list.map((tweet, index) => (
               <ListGroup.Item key={index} className="tweet-item">
                 <div className="tweet-content-container">
@@ -216,45 +221,51 @@ const TweetList = () => {
                   />
                   <div className="tweet-info">
                     <div className="tweet-header">
-                      <strong>{tweet.user.firstname +" "+tweet.user.lastname}</strong> @{tweet.user.username}
+                      <strong>
+                        {tweet.user.firstname + " " + tweet.user.lastname}
+                      </strong>{" "}
+                      @{tweet.user.username}
                       {/* {getFormattedTimestamp(tweet.date)} */}
                     </div>
                     <div className="tweet-content">
-                    {tweet.text}
+                      {tweet.text}
                       <div className="tweet-actions">
                         <FontAwesomeIcon
                           icon={faHeart}
                           className="action-icon left"
-                          onClick={()=>{
-                             const likeUrl = `http://localhost:3000/tweet/${tweet.id}/likes`
-                             const requestBody = {
+                          onClick={() => {
+                            const likeUrl = `http://localhost:3000/tweet/${tweet.id}/likes`;
+                            const requestBody = {
                               userId: userTokenId,
-                              
                             };
-                             axios.post(likeUrl, requestBody, config)
-                                 .then(response => {
-                            //       // Actualiza el estado para eliminar el tweet eliminado
-                            //       //setUserTweets(prevTweets => prevTweets.filter(prevTweets => prevTweets.id !== tweet.id));
-                            const updatedList = [...list];
-                            const updatedTweet = { ...tweet, likeCount: response.data };
-                            updatedList[index] = updatedTweet;
-                            setList(updatedList);
-                                   console.log (response.data);
-                                  
-                                  
-                                 })
-                                 .catch(error => {
-                            //       // Manejar errores
-                                   console.error('Error en la solicitud:', error.message);
-                                 });
-                            console.log(tweet)
-                            console.log("click")
-                            console.log(config)
-                            console.log(userTokenId)
+                            axios
+                              .post(likeUrl, requestBody, config)
+                              .then((response) => {
+                                //       // Actualiza el estado para eliminar el tweet eliminado
+                                //       //setUserTweets(prevTweets => prevTweets.filter(prevTweets => prevTweets.id !== tweet.id));
+                                const updatedList = [...list];
+                                const updatedTweet = {
+                                  ...tweet,
+                                  likeCount: response.data,
+                                };
+                                updatedList[index] = updatedTweet;
+                                setList(updatedList);
+                                console.log(response.data);
+                              })
+                              .catch((error) => {
+                                //       // Manejar errores
+                                console.error(
+                                  "Error en la solicitud:",
+                                  error.message
+                                );
+                              });
+                            console.log(tweet);
+                            console.log("click");
+                            console.log(config);
+                            console.log(userTokenId);
                           }}
                         />
-                        <span className='colorCount'>{tweet.likeCount}</span>
-                        
+                        <span className="colorCount">{tweet.likeCount}</span>
                       </div>
                     </div>
                   </div>
