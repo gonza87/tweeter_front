@@ -27,6 +27,13 @@ function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+       if (formData.password.length < 8 || formData.password.length > 20) {
+    Swal.fire({
+      text: "La contraseña debe tener entre 8 y 20 caracteres",
+      icon: "warning"
+    });
+    return;
+  }
     
     const userData = {
       firstname: formData.firstName,
