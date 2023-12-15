@@ -76,7 +76,7 @@ const TweetList = () => {
   return (
     <div className="container-tw">
       <div className="row">
-        <div className="col-2 d-flex">
+        <div className="col-md-3 col-4 d-flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="52"
@@ -125,14 +125,14 @@ const TweetList = () => {
           </div>
         </div>
 
-        <div className="col-6">
+        <div className="col-md-5 col-8">
           <ListGroup>
             <div className="row perfilHome">
  
 
               <div className="col-12">
                 <h3>Home</h3>
-                <div className="tweet-item">
+                <div className="tweet-item border border-dark" style={{ backgroundColor: '#15202B', border: '1px solid black' }}>
                   <textarea
                     style={{ backgroundColor: '#15202B', color: '#FFFF' }} 
                     value={inputTweetText}
@@ -245,7 +245,7 @@ const TweetList = () => {
             ))}
           </ListGroup>
         </div>
-        <div className="col-4">
+        <div className="col-md-3 derechaHome">
           <h3 className="titleHardk"> What’s happening </h3>
 
           <p className="tipoUno">Programming · Trending</p>

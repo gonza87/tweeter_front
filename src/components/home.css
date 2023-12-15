@@ -133,3 +133,13 @@ line-height: normal;
   font-size: 12px;
 }
 
+
+
+@media (max-width: 768px) {
+  .derechaHome {
+    display: none; /* Oculta la columna izquierda */
+  }
+  
+  
+}
+
