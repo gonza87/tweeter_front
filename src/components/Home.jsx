@@ -76,7 +76,7 @@ const TweetList = () => {
   return (
     <div className="container-tw">
       <div className="row">
-        <div className="col-md-3 col-4 d-flex">
+        <div className="col-md-3 col-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="52"
@@ -110,10 +110,10 @@ const TweetList = () => {
               fill="white"
             />
           </svg>
-          <div className="align-self-end mb-2">
+          <div className="align-self-end mt-5">
             <Button
               variant="danger"
-              size="lg"
+              
               onClick={() => {
                 console.log("click");
                 dispatch(setUser(null));
@@ -246,7 +246,8 @@ const TweetList = () => {
           </ListGroup>
         </div>
         <div className="col-md-3 derechaHome">
-          <h3 className="titleHardk"> What’s happening </h3>
+          <div>
+            <h3 className="titleHardk"> What’s happening </h3>
 
           <p className="tipoUno">Programming · Trending</p>
           <p className="tipoDos">#MongoVsSequelize</p>
@@ -259,6 +260,8 @@ const TweetList = () => {
           <p className="tipoUno">News · Trending</p>
           <p className="tipoDos">#LifeInMars</p>
           <p className="tipoUno">97.5K Tweets</p>
+          </div>
+          
         </div>
       </div>
     </div>
