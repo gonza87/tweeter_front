@@ -62,6 +62,7 @@ function Login() {
     <div className="container">
       <div className="row">
         <div className="col-7 loginIzquierda tex-center" style={{ backgroundColor: '#28384c' }}>
+          <div className="icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="56"
@@ -69,18 +70,22 @@ function Login() {
             viewBox="0 0 56 51"
             fill="none"
           >
+           
             <path
               d="M44.1033 0H52.6903L33.9302 21.6031L56 51H38.7195L25.1848 33.1709L9.69805 51H1.10583L21.1716 27.8931L0 0H17.7192L29.9534 16.2965L44.1033 0ZM41.0895 45.8215H45.8477L15.1337 4.90646H10.0277L41.0895 45.8215Z"
               fill="white"
             />
           </svg>
-          <h2 className="">Hey! Nice to see you again.</h2>
+          </div> 
+          
+          <h3 className="textCol5">Hey! Nice to see you again.</h3>
         </div>
         <div className="col-md-5 col-sm-12 p-5 loginDerecha">
         <h1>Login</h1>
         <p className="subTitle">Ready to start using X?</p>
         <form onSubmit={handleSubmit}>
-          <Form.Group>
+        <div className="inputs">
+          <Form.Group>            
             <InputGroup size="lg" className="mb-3">
               <Form.Control
                 type="text"
@@ -103,13 +108,21 @@ function Login() {
               />
             </InputGroup>
           </Form.Group>
+        </div>  
           
-          
-          <Button variant="primary" type="submit" className="btnLogin mt-4">Login</Button>{' '}
-          
+          <div className="button">
+            <button className="buttonLog" type="submit">
+              Sign in
+            </button>
+          </div>          
         </form>
-        <p className="text-center mt-5">
-          Don't have an account? <a><Link to="/">Sign up</Link></a>
+        <p>
+          <div className="pp">
+            Already have an account?
+            <a>
+              <Link className="link" to="/login">Sign in</Link>
+            </a>
+          </div>
         </p>
       </div>
       </div>

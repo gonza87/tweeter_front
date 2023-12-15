@@ -31,10 +31,22 @@
   background: #1d9bf0;
 }*/
 
- 
+.button {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
 
-.textCol5 {
+.inputs {
+  padding-top: 20px;
+}
+
+.buttonLog {
+  width: 100%;
+  height: 50px;
+  border-radius: 40px;
+  background: #1d9bf0;
   color: white;
+  border: 0;  
 }
 
 .loginDerecha{
@@ -46,38 +58,26 @@
 }
 
 .loginDerecha h1{
-  margin-top: 150px;
-  
-}
-.loginDerecha p{
-  color: black;
-  font-weight: bold;
-  
-  
-}
-.btnLogin{
-  width: 100%;
+  margin-top: 150px;  
 }
 
 .loginIzquierda{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  align-items: start;
+  width: 496px;
   border-bottom-left-radius: 2%;
-    border-top-left-radius: 2%;
+  border-top-left-radius: 2%;
+  background-color: #28384c;
+  padding-top: 50px;  
 }
 
-.loginIzquierda h2{
-  margin-left: 15px;
-margin-top: 75vh;
-color: white;
-
-
+.icon {
+  padding-left: 38px;
 }
-.loginIzquierda svg{
- margin-left: 30px;
- margin-top: 30px;
-
-}
-
-
 
 @media (max-width: 768px) {
   .loginIzquierda {
