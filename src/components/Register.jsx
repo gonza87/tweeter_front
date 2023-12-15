@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Form, InputGroup } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-
+import Swal from "sweetalert2";
 import "./register.css";
 
 function Register() {
@@ -28,6 +28,13 @@ function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (formData.password.length < 8 || formData.password.length > 20) {
+      Swal.fire({
+        text: "La contraseña debe tener entre 8 y 20 caracteres",
+        icon: "warning",
+      });
+      return;
+    }
 
     const userData = {
       firstname: formData.firstName,
@@ -38,6 +45,19 @@ function Register() {
       photo: "es un imagen",
       password: formData.password,
     };
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.username ||
+      !formData.email ||
+      !formData.password
+    ) {
+      Swal.fire({
+        text: "Complete all fields please",
+        icon: "warning",
+      });
+      return;
+    }
 
     axios
       .post(apiUrl, userData)
@@ -51,8 +71,8 @@ function Register() {
   };
 
   return (
-    <div className="containerProfile container-fluid">
-      <div className="column1 col-7 ">
+    <div className="containerProfile">
+      <div className="column1 col-7">
         <svg
           className="iconoX"
           xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +176,7 @@ function Register() {
           <div className="pp">
             Already have an account?
             <a>
-              <Link to="/profile">Sign in</Link>
+              <Link to="/login">Sign in</Link>
             </a>
           </div>
         </p>
