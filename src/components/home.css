@@ -59,11 +59,13 @@ line-height: normal;
 
 /* //////////////////////////// */
 .tweet-item {
+  
   margin-bottom: 15px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+
 .tweet-header {
   text-align: left;
 }
@@ -103,12 +105,16 @@ line-height: normal;
 }
 
 .tweet-info {
+  color: #FFFF;
   display: flex;
   flex-direction: column;
 }
 
 .tweet-header {
   margin-bottom: 5px;
+}
+.tweet-header span{
+  color: #647788;
 }
 
 .tweet-content {
@@ -123,6 +129,7 @@ line-height: normal;
 }
 
 .colorCount{
-  color: black;
+  color: #F91894;
   font-size: 12px;
 }
+
