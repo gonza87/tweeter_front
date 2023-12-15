@@ -183,7 +183,7 @@ const TweetList = () => {
             </div>
 
             {list.map((tweet, index) => (
-              <ListGroup.Item key={index} className="tweet-item mb-2 border border-dark" style={{ backgroundColor: '#15202B', border: '1px solid black' }}>
+              <ListGroup.Item key={index} className="tweet-items" style={{ backgroundColor: '#15202B', border: '1px solid #2E3F4F' }}>
                 <div className="tweet-content-container">
                   <img
                     src={tweet.user.photo}

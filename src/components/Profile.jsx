@@ -93,7 +93,7 @@ const Profile = () => {
             <div className="portada">
               <img
                 className="portada"
-                src="/public/images.jpg"
+                src="/public/Rectangle 8.png"
                 alt="portadaImg"
               />
               
@@ -116,7 +116,7 @@ const Profile = () => {
             </div>
  
             {userTweets.map((tweet, index) => (
-              <ListGroup.Item  className="tweet-item" key={tweet.id}>
+              <ListGroup.Item  className="tweet-items" key={tweet.id} style={{ backgroundColor: '#15202B', border: '1px solid #2E3F4F' }}>
                 <div className="tweet-content-container">
                   <img
                     src={user.photo}
@@ -126,7 +126,7 @@ const Profile = () => {
                   
                   <div className="tweet-info">
                     <div className="tweet-header">
-                      <strong>{user.firstname +" "+user.lastname}</strong> @{user.username}
+                      <strong>{user.firstname +" "+user.lastname}</strong> <span>@{user.username}</span>
                       {/* {getFormattedTimestamp(tweet.date)} */}
                     </div>
                     <div className="tweet-content row">
