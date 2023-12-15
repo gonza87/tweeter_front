@@ -4,7 +4,7 @@ import Login from "./components/pagesLogin/Login";
 import Register from "./components/Register";
 import TweetList from "./components/Home";
 import Profile from "./components/Profile";
-
+import NotFound404 from "./components/pageError/NotFound404"
 import "./App.css";
 
 const ProtectedRoute = ({ user, redirectPath = "/login" }) => {
@@ -29,7 +29,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
           </Route>
 
-          {/* <Route path='*' element={<Error404/>}/> */}
+           <Route path='*' element={<NotFound404/>}/> 
         </Routes>
       </div>
     </>
