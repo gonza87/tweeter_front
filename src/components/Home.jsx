@@ -113,6 +113,7 @@ const TweetList = () => {
           <div className="align-self-end mb-2">
             <Button
               variant="danger"
+              size="lg"
               onClick={() => {
                 console.log("click");
                 dispatch(setUser(null));
@@ -133,6 +134,7 @@ const TweetList = () => {
                 <h3>Home</h3>
                 <div className="tweet-item">
                   <textarea
+                    style={{ backgroundColor: '#15202B', color: '#FFFF' }} 
                     value={inputTweetText}
                     className="form-control mb-2"
                     placeholder="What's happening?"
@@ -145,38 +147,7 @@ const TweetList = () => {
                   </div>
                 </div>
 
-                {/* <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                <Modal.Title>Nueva Tweet</Modal.Title>
-                </Modal.Header>
-                
-                
-        <form onSubmit={(event)=>{
-          event.preventDefault();
-          
-        }}>
-          <div className='p-1'>
-            <input value={inputTweetText} 
-            type="text" 
-            className="form-control mb-1 mt-1" 
-            placeholder="Ingrese Tweet"
-            onChange={(event)=> setInputTweetText(event.target.value)} 
-            />
-            <div className='d-flex justify-content-between mt-2'>
-              <Button type="submit" variant="primary">
-                    Crear
-                </Button>
-                <Button variant="secondary" onClick={handleClose}>
-                    Cancelar
-                </Button>
-            </div>
-            
-          </div>
-        
-        </form>
-                
-                
-            </Modal> */}
+   
                 <Modal show={show} onHide={handleClose}>
                   <Modal.Header closeButton>
                     <Modal.Title>Nuevo Tweet</Modal.Title>
@@ -212,7 +183,7 @@ const TweetList = () => {
             </div>
 
             {list.map((tweet, index) => (
-              <ListGroup.Item key={index} className="tweet-item">
+              <ListGroup.Item key={index} className="tweet-item mb-2 border border-dark" style={{ backgroundColor: '#15202B', border: '1px solid black' }}>
                 <div className="tweet-content-container">
                   <img
                     src={tweet.user.photo}
@@ -224,7 +195,7 @@ const TweetList = () => {
                       <strong>
                         {tweet.user.firstname + " " + tweet.user.lastname}
                       </strong>{" "}
-                      @{tweet.user.username}
+                      <span>@{tweet.user.username}</span>
                       {/* {getFormattedTimestamp(tweet.date)} */}
                     </div>
                     <div className="tweet-content">
