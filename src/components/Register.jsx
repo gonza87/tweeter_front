@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import "./register.css";
 
 function Register() {
-  console.log("test")
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
