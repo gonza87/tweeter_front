@@ -110,7 +110,7 @@ const TweetList = () => {
               fill="white"
             />
           </svg>
-          <div className="align-self-end mt-5">
+          <div className="align-self-end mt-5 btnLogout">
             <Button
               variant="danger"
               

@@ -138,6 +138,9 @@ line-height: normal;
   padding-top: 20px;
   padding-bottom: 20px;
 }
+.btnLogout{
+  padding-top: 60vh;
+}
 
 @media (max-width: 768px) {
   .derechaHome {
