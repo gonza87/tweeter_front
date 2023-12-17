@@ -52,7 +52,7 @@ const Profile = () => {
   return (
     <div className="container-tw">
       <div className="row">
-        <div className="col-2">
+        <div className="col-md-3 col-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="52"
@@ -86,9 +86,22 @@ const Profile = () => {
               fill="white"
             />
           </svg>
+          <div className="align-self-end mt-5 btnLogout">
+            <Button
+              variant="danger"
+              
+              onClick={() => {
+                console.log("click");
+                dispatch(setUser(null));
+                //navigate("/login");
+              }}
+            >
+              Logout
+            </Button>{" "}
+          </div>
         </div>
 
-        <div className="col-6">
+        <div className="col-md-5 col-8">
           <ListGroup>
             <div className="portada">
               <img
@@ -166,8 +179,9 @@ const Profile = () => {
             ))}
           </ListGroup>
         </div>
-        <div className="col-4">
-          <h3 className="titleHardk"> What’s happening </h3>
+        <div className="col-md-3 derechaProfile">
+          <div>
+            <h3 className="titleHardk"> What’s happening </h3>
 
           <p className="tipoUno">Programming · Trending</p>
           <p className="tipoDos">#MongoVsSequelize</p>
@@ -180,6 +194,8 @@ const Profile = () => {
           <p className="tipoUno">News · Trending</p>
           <p className="tipoDos">#LifeInMars</p>
           <p className="tipoUno">97.5K Tweets</p>
+          </div>
+          
           <Button onClick={()=>{
             Swal.fire({
               title: "Are you sure?",
@@ -217,6 +233,7 @@ const Profile = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 

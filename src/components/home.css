@@ -139,6 +139,7 @@ line-height: normal;
   padding-bottom: 20px;
 }
 .btnLogout{
+  position: fixed;
   padding-top: 60vh;
 }
 
