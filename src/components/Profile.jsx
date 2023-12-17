@@ -1,19 +1,22 @@
 
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { ListGroup } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { setUser } from "../redux/userReducer";
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Swal from 'sweetalert2'
 import "./profile.css";
 
 const Profile = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [userTweets, setUserTweets] = useState([]);
-  const [user, setUser]= useState([]);
+  const [user, setDataUser]= useState([]);
   const token = useSelector ((state) => state.user.token);
   const username = useSelector ((state) => state.user.username);
   console.log("token: "+ token)
@@ -36,7 +39,7 @@ const Profile = () => {
       //console.log(response.data);
        //console.log(response.data); 
        setUserTweets (response.data.tweets);
-       setUser (response.data);
+       setDataUser (response.data);
       
     })
     .catch(error => {
