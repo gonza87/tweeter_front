@@ -10,13 +10,15 @@ import "./login.css";
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const apiUrl = "http://localhost:3000/token";
+
   const [loginData, setLoginData] = useState({
     emailOrUsername: "",
     password: "",
   });
 
-  const dispatch = useDispatch();
-  const apiUrl = "http://localhost:3000/token";
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -28,7 +30,8 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Lógica de inicio de sesión aquí
+
+    // Validación básica en el cliente
     if (!loginData.emailOrUsername || !loginData.password) {
       Swal.fire({
         text: "Complete all fields please",
@@ -37,23 +40,35 @@ function Login() {
       return;
     }
 
+    setLoading(true);
+
     axios
       .post(apiUrl, loginData)
       .then((response) => {
         dispatch(setUser(response.data));
         navigate("/home");
-        console.log("Respuesta exitosa:", response.data);
-        if (response.data === "Usuario no existe") {
-          navigate("/");
-        }
       })
       .catch((error) => {
         console.error("Error al enviar datos:", error);
+
+        if (error.response) {
+          // Manejar errores específicos de la respuesta del servidor
+          Swal.fire({
+            text: error.response.data.error || "Error en la solicitud",
+            icon: "error",
+          });
+        } else {
+          // Manejar otros errores
+          Swal.fire({
+            text: "Error en la solicitud",
+            icon: "error",
+          });
+        }
+      })
+      .finally(() => {
+        setLoading(false);
       });
 
-    console.log("click");
-
-    console.log("Login data:", loginData);
   };
 
   return (
