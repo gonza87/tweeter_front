@@ -62,11 +62,25 @@ function Register() {
       .post(apiUrl, userData)
       .then((response) => {
         console.log("Respuesta exitosa:", response.data);
+      navigate("/login");
       })
       .catch((error) => {
         console.error("Error al enviar datos:", error);
+        if (error.response && error.response.status === 409) {
+          // 409 es el código de estado para conflicto (usuario no disponible)
+          Swal.fire({
+            text: "The username is already in use. Please choose another.",
+            icon: "error",
+          });
+        } else {
+          // Manejar otros errores
+          Swal.fire({
+            text: "There was an error creating the account. Please try again.",
+            icon: "error",
+          });
+        }
       });
-    navigate("/login");
+    
   };
 
   return (
