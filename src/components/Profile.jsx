@@ -143,7 +143,8 @@ const Profile = () => {
                   <div className="tweet-info">
                     <div className="tweet-header">
                       <strong>{user.firstname +" "+user.lastname}</strong> <span>@{user.username}</span>
-                      {/* {getFormattedTimestamp(tweet.date)} */}
+                      <span> - {tweet.createdAt}</span>
+                      
                     </div>
                     <div className="tweet-content row">
                       <div className='col-12'>{tweet.text}</div>

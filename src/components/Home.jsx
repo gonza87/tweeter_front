@@ -225,7 +225,8 @@ const TweetList = () => {
                         {tweet.user.firstname + " " + tweet.user.lastname}
                       </strong>{" "}
                       <span>@{tweet.user.username}</span>
-                      {/* {getFormattedTimestamp(tweet.date)} */}
+                      <span> - {tweet.createdAt}</span>
+                      
                     </div>
                     <div className="tweet-content">
                       {tweet.text}
