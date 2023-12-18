@@ -227,7 +227,7 @@ const TweetList = () => {
                       <span>@{tweet.user.username}</span>
                       {/* {getFormattedTimestamp(tweet.date)} */}
                     </div>
-                    <div className="tweet-content">
+                    <div className="tweet-content" style={{ wordBreak: 'break-word' }}>
                       {tweet.text}
                       <div className="tweet-actions">
                         <FontAwesomeIcon
