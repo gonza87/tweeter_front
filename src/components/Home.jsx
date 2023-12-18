@@ -10,6 +10,7 @@ import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import Swal from "sweetalert2";
 
 import "./home.css";
 import { setUser } from "../redux/userReducer";
@@ -31,7 +32,7 @@ const TweetList = () => {
 
   const apiUrl = "http://localhost:3000/tweet";
 
-  const createTweetUrl = "http://localhost:3000/tweet/tweet/create";
+  const createTweetUrl = "http://localhost:3000/tweet";
 
   const config = {
     headers: {
@@ -41,6 +42,13 @@ const TweetList = () => {
   };
 
   const handleCreateTweet = () => {
+    if (inputTweetText.length > 150) {
+      Swal.fire({
+        text: "The tweet text cannot exceed 150 characters.",
+        icon: "error",
+      });
+      return; // No continuar si el texto es demasiado largo
+    }
     const newTweet = {
       text: inputTweetText,
     };
@@ -53,7 +61,28 @@ const TweetList = () => {
         handleClose();
       })
       .catch((error) => {
-        console.error("Error en la solicitud:", error.message);
+        if (error.response) {
+          
+          console.error("Error en la respuesta:", error.response.data);
+          Swal.fire({
+            text: "Error: " + error.response.data.message,
+            icon: "error",
+          });
+        } else if (error.request && error.response.status === 409) {
+          
+          console.error("Error sin respuesta:", error.request);
+          Swal.fire({
+            text: "Error: No se recibió respuesta del servidor.",
+            icon: "error",
+          });
+        } else {
+          
+          console.error("Error en la configuración de la solicitud:", error.message);
+          Swal.fire({
+            text: "Error en la configuración de la solicitud: " + error.message,
+            icon: "error",
+          });
+        }
       });
   };
 

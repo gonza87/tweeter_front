@@ -62,7 +62,7 @@ function Register() {
       .post(apiUrl, userData)
       .then((response) => {
         console.log("Respuesta exitosa:", response.data);
-      navigate("/login");
+        navigate("/login");
       })
       .catch((error) => {
         console.error("Error al enviar datos:", error);
