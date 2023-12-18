@@ -132,7 +132,7 @@ const Profile = () => {
             </div>
  
             {userTweets.map((tweet, index) => (
-              <ListGroup.Item  className="tweet-items" key={tweet.id} style={{ backgroundColor: '#15202B', border: '1px solid #2E3F4F' }}>
+              <ListGroup.Item  className="tweet-items" key={tweet.id} style={{ backgroundColor: '#15202B', border: '1px solid #2E3F4F', wordBreak: 'break-word' }}>
                 <div className="tweet-content-container">
                   <img
                     src={user.photo}
