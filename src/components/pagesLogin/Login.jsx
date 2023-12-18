@@ -68,7 +68,6 @@ function Login() {
       .finally(() => {
         setLoading(false);
       });
-
   };
 
   return (
@@ -133,7 +132,7 @@ function Login() {
           </form>
           <p>
             <div className="pp">
-              Already have an account?
+              Don't have an account?
               <a>
                 <Link className="link" to="/">
                   Sign up
