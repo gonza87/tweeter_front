@@ -230,8 +230,10 @@ const TweetList = () => {
                   />
                   <div className="tweet-info">
                     <div className="tweet-header">
-                      <strong>
-                        {tweet.user.firstname + " " + tweet.user.lastname}
+                     <strong>
+                        <Link to={`/profile/${tweet.user.username}`}>
+                          {tweet.user.firstname + " " + tweet.user.lastname}                {/* ////se envuelven los datos en link//// */}
+                        </Link>
                       </strong>{" "}
                       <span>@{tweet.user.username}</span>
                       <span> - {tweet.createdAt}</span>
