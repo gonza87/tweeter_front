@@ -80,7 +80,6 @@ function Register() {
           });
         }
       });
-    
   };
 
   return (
@@ -189,7 +188,9 @@ function Register() {
           <div className="pp">
             Already have an account?
             <a>
-              <Link className="link" to="/login">Sign in</Link>
+              <Link className="link" to="/login">
+                Sign in
+              </Link>
             </a>
           </div>
         </p>

@@ -3,8 +3,6 @@
   flex-direction: column;
 }
 
-/* TweetList.css */
-
 .portada {
   display: flex;
   width: 100%;
@@ -21,15 +19,6 @@
 .col-2 {
   color: white;
 }
-/* .col-4 {
-  width: 350px;
-  height: 350px;
-  flex-shrink: 0;
-  color: white;
-  background-color: #1e2732;
-  text-align: left;
-  padding-top: 10px;
-} */
 
 .titleHardk {
   color: #fff;
@@ -71,7 +60,6 @@
 .tweet-content {
   text-align: left;
   /*width: 450px;*/
-  
 }
 .tweet-actions {
   display: flex;
@@ -114,36 +102,30 @@
   margin-bottom: 5px;
 }
 
-.tweet-content {
-  /* Estilos para el contenido del tweet */
-}
-
-.descriptionUser{
+.descriptionUser {
   color: white;
 }
-.descriptionUser p{
+.descriptionUser p {
   color: #647788;
 }
 
-.following span{
-  color: #647788
+.following span {
+  color: #647788;
 }
 
-.following{
+.following {
   text-align: right;
 }
 
-
-.descriptionUser{
+.descriptionUser {
   position: relative;
 }
-.test{
+.test {
   position: absolute;
   bottom: 150px;
   left: 40px;
-  
 }
-.test img{
+.test img {
   width: 90px;
   height: 90px;
   border-radius: 50%;
@@ -151,10 +133,10 @@
   margin-bottom: 10px;
 }
 
-.btnDeleteAccount{
+.btnDeleteAccount {
   margin-top: 50px;
 }
-.derechaProfile div{
+.derechaProfile div {
   border-radius: 5%;
   background-color: #1e2732;
   padding-left: 20px;
@@ -166,6 +148,4 @@
   .derechaProfile {
     display: none; /* Oculta la columna izquierda */
   }
-  
-  
 }

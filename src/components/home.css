@@ -3,8 +3,6 @@
   flex-direction: column;
 }
 
-/* TweetList.css */
-
 .portada {
   display: flex;
   width: 100%;
@@ -17,19 +15,6 @@
   height: 100%;
   object-fit: cover;
 }
-
-/* .col-2 {
-  color: white;
-}
-.col-4 {
-  width: 350px;
-  height: 350px;
-  flex-shrink: 0;
-  color: white;
-  background-color: #1e2732;
-  text-align: left;
-  padding-top: 10px;
-} */
 
 .titleHardk {
   color: #fff;
@@ -47,19 +32,18 @@
   font-weight: 400;
   line-height: normal;
 }
-.tipoDos{
-    color: #FFF;
+.tipoDos {
+  color: #fff;
 
-font-family: Inter;
-font-size: 16px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 /* //////////////////////////// */
 .tweet-item {
-  
   margin-bottom: 15px;
   padding: 10px;
   border: 1px solid #ddd;
@@ -74,7 +58,7 @@ line-height: normal;
 }
 .tweet-actions {
   display: flex;
-  
+
   margin-top: 8px;
 }
 
@@ -105,7 +89,7 @@ line-height: normal;
 }
 
 .tweet-info {
-  color: #FFFF;
+  color: #ffff;
   display: flex;
   flex-direction: column;
 }
@@ -113,44 +97,39 @@ line-height: normal;
 .tweet-header {
   margin-bottom: 5px;
 }
-.tweet-header span{
+.tweet-header span {
   color: #647788;
 }
 
-
-
-.perfilHome{
+.perfilHome {
   color: white;
 }
-.perfilHome p{
-  color: #647788
+.perfilHome p {
+  color: #647788;
 }
 
-.colorCount{
-  color: #F91894;
+.colorCount {
+  color: #f91894;
   font-size: 12px;
 }
 
-.derechaHome div{
+.derechaHome div {
   border-radius: 5%;
   background-color: #1e2732;
   padding-left: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.btnLogout{
+.btnLogout {
   position: fixed;
   padding-top: 60vh;
 }
 .tweet-item textarea::placeholder {
-  color: #647788; 
+  color: #647788;
 }
 
 @media (max-width: 768px) {
   .derechaHome {
     display: none; /* Oculta la columna izquierda */
   }
-  
-  
 }
-

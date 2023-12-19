@@ -17,7 +17,7 @@ import { setUser } from "../redux/userReducer";
 
 const TweetList = () => {
   const [show, setShow] = useState(false);
-  const handleClose = () => [setShow(false),setInputTweetText("")];
+  const handleClose = () => [setShow(false), setInputTweetText("")];
   const handleShow = () => setShow(true);
   const [inputTweetText, setInputTweetText] = useState("");
 
@@ -62,22 +62,22 @@ const TweetList = () => {
       })
       .catch((error) => {
         if (error.response) {
-          
           console.error("Error en la respuesta:", error.response.data);
           Swal.fire({
             text: "Error: " + error.response.data.message,
             icon: "error",
           });
         } else if (error.request && error.response.status === 409) {
-          
           console.error("Error sin respuesta:", error.request);
           Swal.fire({
             text: "Error: No se recibió respuesta del servidor.",
             icon: "error",
           });
         } else {
-          
-          console.error("Error en la configuración de la solicitud:", error.message);
+          console.error(
+            "Error en la configuración de la solicitud:",
+            error.message
+          );
           Swal.fire({
             text: "Error en la configuración de la solicitud: " + error.message,
             icon: "error",
@@ -142,7 +142,6 @@ const TweetList = () => {
           <div className="align-self-end mt-5 btnLogout">
             <Button
               variant="danger"
-              
               onClick={() => {
                 console.log("click");
                 dispatch(setUser(null));
@@ -157,13 +156,17 @@ const TweetList = () => {
         <div className="col-md-5 col-8">
           <ListGroup>
             <div className="row perfilHome">
- 
-
               <div className="col-12">
                 <h3>Home</h3>
-                <div className="tweet-item border border-dark" style={{ backgroundColor: '#15202B', border: '1px solid black' }}>
+                <div
+                  className="tweet-item border border-dark"
+                  style={{
+                    backgroundColor: "#15202B",
+                    border: "1px solid black",
+                  }}
+                >
                   <textarea
-                    style={{ backgroundColor: '#15202B', color: '#FFFF' }} 
+                    style={{ backgroundColor: "#15202B", color: "#FFFF" }}
                     value={inputTweetText}
                     className="form-control mb-2"
                     placeholder="What's happening?"
@@ -176,7 +179,6 @@ const TweetList = () => {
                   </div>
                 </div>
 
-   
                 <Modal show={show} onHide={handleClose}>
                   <Modal.Header closeButton>
                     <Modal.Title>Nuevo Tweet</Modal.Title>
@@ -212,7 +214,14 @@ const TweetList = () => {
             </div>
 
             {list.map((tweet, index) => (
-              <ListGroup.Item key={index} className="tweet-items" style={{ backgroundColor: '#15202B', border: '1px solid #2E3F4F' }}>
+              <ListGroup.Item
+                key={index}
+                className="tweet-items"
+                style={{
+                  backgroundColor: "#15202B",
+                  border: "1px solid #2E3F4F",
+                }}
+              >
                 <div className="tweet-content-container">
                   <img
                     src={tweet.user.photo}
@@ -226,9 +235,11 @@ const TweetList = () => {
                       </strong>{" "}
                       <span>@{tweet.user.username}</span>
                       <span> - {tweet.createdAt}</span>
-                      
                     </div>
-                    <div className="tweet-content" style={{ wordBreak: 'break-word' }}>
+                    <div
+                      className="tweet-content"
+                      style={{ wordBreak: "break-word" }}
+                    >
                       {tweet.text}
                       <div className="tweet-actions">
                         <FontAwesomeIcon
@@ -279,19 +290,18 @@ const TweetList = () => {
           <div>
             <h3 className="titleHardk"> What’s happening </h3>
 
-          <p className="tipoUno">Programming · Trending</p>
-          <p className="tipoDos">#MongoVsSequelize</p>
-          <p className="tipoUno">97.5K Tweets</p>
+            <p className="tipoUno">Programming · Trending</p>
+            <p className="tipoDos">#MongoVsSequelize</p>
+            <p className="tipoUno">97.5K Tweets</p>
 
-          <p className="tipoUno">Entertainment · Trending </p>
-          <p className="tipoDos">#StarWars</p>
-          <p className="tipoUno">97.5K Tweets</p>
+            <p className="tipoUno">Entertainment · Trending </p>
+            <p className="tipoDos">#StarWars</p>
+            <p className="tipoUno">97.5K Tweets</p>
 
-          <p className="tipoUno">News · Trending</p>
-          <p className="tipoDos">#LifeInMars</p>
-          <p className="tipoUno">97.5K Tweets</p>
+            <p className="tipoUno">News · Trending</p>
+            <p className="tipoDos">#LifeInMars</p>
+            <p className="tipoUno">97.5K Tweets</p>
           </div>
-          
         </div>
       </div>
     </div>
