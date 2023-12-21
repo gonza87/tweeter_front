@@ -136,7 +136,7 @@ function Profile() {
               >
                 <div className="tweet-content-container">
                   <img
-                    src={user.photo}
+                    src={`http://localhost:3000/img/${user.photo}`}
                     alt="User Avatar"
                     className="user-avatar circular-image"
                   />
