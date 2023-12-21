@@ -112,7 +112,7 @@ function Profile() {
 
             <div className="row descriptionUser">
               <div className="test">
-                <img src={user.photo} alt="" />
+                <img src={`http://localhost:3000/img/${user.photo}`} alt="" />
               </div>
               <div className="col-6">
                 <h3>{user.firstname + " " + user.lastname}</h3>

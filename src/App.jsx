@@ -34,7 +34,6 @@ function App() {
            
             <Route path="/profile/:username" element={<UserProfile />} />
          
-
           </Route>
 
            <Route path='*' element={<NotFound404/>}/> 

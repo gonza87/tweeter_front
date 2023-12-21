@@ -13,16 +13,24 @@ function Register() {
     email: "",
     username: "",
     password: "",
+    file: null,
   });
 
   const apiUrl = "http://localhost:3000/users";
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    const { name, value, files } = event.target;
+    if (name === "photo") {
+      setFormData((prevData) => ({
+        ...prevData,
+        file: files[0], // Manejar el archivo correctamente
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = (event) => {
@@ -41,7 +49,7 @@ function Register() {
       username: formData.username,
       email: formData.email,
       description: "Descripcion",
-      photo: "es un imagen",
+      photo: formData.file,
       password: formData.password,
     };
     if (
@@ -59,7 +67,11 @@ function Register() {
     }
 
     axios
-      .post(apiUrl, userData)
+    .post(apiUrl, userData, {
+      headers: {
+        "Content-Type": "multipart/form-data", // Establece el tipo de contenido correcto
+      },
+    })
       .then((response) => {
         console.log("Respuesta exitosa:", response.data);
         navigate("/login");
@@ -158,7 +170,7 @@ function Register() {
                 <InputGroup.Text>Choose file</InputGroup.Text>
                 <Form.Control
                   type="file" // Cambiado a tipo 'file'
-                  name="file" // Cambiado a un nombre más apropiado, por ejemplo, 'file'
+                  name="photo" // Cambiado a un nombre más apropiado, por ejemplo, 'file'
                   onChange={handleChange}
                 />
               </InputGroup>
