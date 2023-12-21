@@ -11,7 +11,7 @@ import "./login.css";
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const apiUrl = "http://localhost:3000/token";
+  const apiUrl = import.meta.env.VITE_API_URL/+token;
 
   const [loginData, setLoginData] = useState({
     emailOrUsername: "",
