@@ -223,11 +223,19 @@ const TweetList = () => {
                 }}
               >
                 <div className="tweet-content-container">
+                {tweet.user.photo.startsWith("https:") ? (
                   <img
                     src={tweet.user.photo}
                     alt="User Avatar"
                     className="user-avatar circular-image"
                   />
+                  ) : (
+                  <img
+                    src={`http://localhost:3000/img/${tweet.user.photo}`}
+                    alt="User Avatar"
+                    className="user-avatar circular-image"
+                  />
+                )}
                   <div className="tweet-info">
                     <div className="tweet-header">
                      <strong>
