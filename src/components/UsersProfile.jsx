@@ -17,7 +17,7 @@ const UserProfile = () => {
   const [user, setDataUser] = useState({});
   const token = useSelector((state) => state.user.token);
 
-  const apiUrl = `http://localhost:3000/users/${username}`;
+  const apiUrl = `${import.meta.env.VITE_API_URL}users/${username}`; //`http://localhost:3000/users/${username}`;
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -96,7 +96,7 @@ const UserProfile = () => {
             <div className="portada">
               <img
                 className="portada"
-                src="/public/Rectangle 8.png"
+                src="/Rectangle 8.png"
                 alt="portadaImg"
               />
             </div>
