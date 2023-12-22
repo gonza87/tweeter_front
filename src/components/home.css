@@ -132,4 +132,9 @@
   .derechaHome {
     display: none; /* Oculta la columna izquierda */
   }
+
+  .btnLogout {
+    position: static;
+    padding-top: 0;
+  }
 }
