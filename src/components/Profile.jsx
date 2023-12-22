@@ -21,7 +21,7 @@ function Profile() {
   console.log("token: " + token);
   console.log("username: " + username);
 
-  const apiUrl = `${import.meta.env.VITE_API_URL}/users/${username}`//`http://localhost:3000/users/${username}`;
+  const apiUrl = `${import.meta.env.VITE_API_URL}users/${username}`//`http://localhost:3000/users/${username}`;
   console.log(apiUrl);
 
   const config = {
