@@ -112,7 +112,7 @@ function Profile() {
 
             <div className="row descriptionUser">
               <div className="test">
-                <img src={`${import.meta.env.VITE_API_URL}/img/${user.photo}`} alt="" />
+                <img src={`${import.meta.env.VITE_API_URL}img/${user.photo}`} alt="" />
               </div>
               <div className="col-6">
                 <h3>{user.firstname + " " + user.lastname}</h3>
@@ -136,7 +136,7 @@ function Profile() {
               >
                 <div className="tweet-content-container">
                   <img
-                    src={`${import.meta.env.VITE_API_URL}/img/${user.photo}`}
+                    src={`${import.meta.env.VITE_API_URL}img/${user.photo}`}
                     alt="User Avatar"
                     className="user-avatar circular-image"
                   />
@@ -159,7 +159,7 @@ function Profile() {
                           icon={faTrash}
                           className="action-icon right"
                           onClick={() => {
-                            const deleteUrl = `${import.meta.env.VITE_API_URL}/tweet/${tweet.id}`;
+                            const deleteUrl = `${import.meta.env.VITE_API_URL}tweet/${tweet.id}`;
                             axios
                               .delete(deleteUrl, config)
                               .then((response) => {
@@ -218,7 +218,7 @@ function Profile() {
                 confirmButtonText: "Yes, delete it!",
               }).then((result) => {
                 if (result.isConfirmed) {
-                  const deleteUserUrl = `${import.meta.env.VITE_API_URL}/users/`;
+                  const deleteUserUrl = `${import.meta.env.VITE_API_URL}users/`;
                   axios
                     .delete(deleteUserUrl, config)
                     .then((response) => {
