@@ -11,7 +11,7 @@ import "./login.css";
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const apiUrl = "https://tweeter-api-one.vercel.app/token"//import.meta.env.VITE_API_URL+"token";
+  const apiUrl = import.meta.env.VITE_API_URL+"token";//"https://tweeter-api-one.vercel.app/token"
 
   const [loginData, setLoginData] = useState({
     emailOrUsername: "",
