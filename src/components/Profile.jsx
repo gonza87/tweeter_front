@@ -112,7 +112,7 @@ function Profile() {
 
             <div className="row descriptionUser">
               <div className="test">
-                <img src={`${import.meta.env.VITE_API_URL}img/${user.photo}`} alt="" />
+                <img src={`${import.meta.env.VITE_BUCKET_URL}img/${user.photo}`} alt="" />
               </div>
               <div className="col-6">
                 <h3>{user.firstname + " " + user.lastname}</h3>
