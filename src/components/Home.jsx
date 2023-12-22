@@ -30,9 +30,9 @@ const TweetList = () => {
   console.log("user id: " + userTokenId);
   //console.log("username: "+ username)
 
-  const apiUrl = `${VITE_API_URLITE_API_URL}/tweet`//"http://localhost:3000/tweet";
+  const apiUrl = "http://localhost:3000/tweet";
 
-  const createTweetUrl = `${VITE_API_URLITE_API_URL}/tweet`//"http://localhost:3000/tweet";
+  const createTweetUrl = "http://localhost:3000/tweet";
 
   const config = {
     headers: {
@@ -231,7 +231,7 @@ const TweetList = () => {
                   />
                   ) : (
                   <img
-                    src={`https://tweeter-api-one.vercel.app/${tweet.user.photo}`}//{`http://localhost:3000/img/${tweet.user.photo}`}
+                    src={`http://localhost:3000/img/${tweet.user.photo}`}
                     alt="User Avatar"
                     className="user-avatar circular-image"
                   />
@@ -256,7 +256,7 @@ const TweetList = () => {
                           icon={faHeart}
                           className="action-icon left"
                           onClick={() => {
-                            const likeUrl = `https://tweeter-api-one.vercel.app/tweet/${tweet.id}/likes`;//`http://localhost:3000/tweet/${tweet.id}/likes`;
+                            const likeUrl = `http://localhost:3000/tweet/${tweet.id}/likes`;
                             const requestBody = {
                               userId: userTokenId,
                             };
