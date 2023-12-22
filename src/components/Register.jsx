@@ -16,7 +16,7 @@ function Register() {
     file: null,
   });
 
-  const apiUrl = "https://tweeter-api-one.vercel.app/users";
+  const apiUrl = `${import.meta.env.VITE_API_URL}users`; //"https://tweeter-api-one.vercel.app/users";
 
   const handleChange = (event) => {
     const { name, value, files } = event.target;
