@@ -135,11 +135,24 @@ function Profile() {
                 }}
               >
                 <div className="tweet-content-container">
+                {user && user.photo && user.photo.startsWith("https:") ? (
+                  <img
+                    src={user.photo}
+                    alt="User Avatar"
+                    className="user-avatar circular-image"
+                  />
+                  ) : (
                   <img
                     src={`${import.meta.env.VITE_API_URL}img/${user.photo}`}
                     alt="User Avatar"
                     className="user-avatar circular-image"
                   />
+                )}
+                  {/* <img
+                    src={`${import.meta.env.VITE_API_URL}img/${user.photo}`}
+                    alt="User Avatar"
+                    className="user-avatar circular-image"
+                  /> */}
 
                   <div className="tweet-info">
                     <div className="tweet-header">
