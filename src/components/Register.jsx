@@ -200,7 +200,7 @@ function Register() {
           <div className="pp">
             Already have an account?
             <a>
-              <Link className="link" to="/login">
+              <Link className="link" to={`${import.meta.env.VITE_API_URL}/login`}>
                 Sign in
               </Link>
             </a>
