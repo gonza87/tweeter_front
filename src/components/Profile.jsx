@@ -112,7 +112,12 @@ function Profile() {
 
             <div className="row descriptionUser">
               <div className="test">
-                <img src={`${import.meta.env.VITE_BUCKET_URL}${user.photo}`} alt="" />
+              {user && user.photo && user.photo.startsWith("https:") ? (
+                  <img src={user.photo}/>
+                  ) : (
+                  <img src={`${import.meta.env.VITE_BUCKET_URL}${user.photo}`}/>
+                )}
+                
               </div>
               <div className="col-6">
                 <h3>{user.firstname + " " + user.lastname}</h3>
@@ -148,11 +153,7 @@ function Profile() {
                     className="user-avatar circular-image"
                   />
                 )}
-                  {/* <img
-                    src={`${import.meta.env.VITE_API_URL}img/${user.photo}`}
-                    alt="User Avatar"
-                    className="user-avatar circular-image"
-                  /> */}
+                 
 
                   <div className="tweet-info">
                     <div className="tweet-header">
