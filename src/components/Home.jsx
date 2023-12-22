@@ -30,9 +30,9 @@ const TweetList = () => {
   console.log("user id: " + userTokenId);
   //console.log("username: "+ username)
 
-  const apiUrl = "http://localhost:3000/tweet";
+  const apiUrl = "https://tweeter-api-one.vercel.app/tweet"//"http://localhost:3000/tweet";
 
-  const createTweetUrl = "http://localhost:3000/tweet";
+  const createTweetUrl ="https://tweeter-api-one.vercel.app/tweet" //"http://localhost:3000/tweet";
 
   const config = {
     headers: {
@@ -231,7 +231,7 @@ const TweetList = () => {
                   />
                   ) : (
                   <img
-                    src={`http://localhost:3000/img/${tweet.user.photo}`}
+                    src={`https://pbgbibvtmilvmhrvnsic.supabase.co/storage/v1/object/public/images/${tweet.user.photo}`}//`http://localhost:3000/img/${tweet.user.photo}`}
                     alt="User Avatar"
                     className="user-avatar circular-image"
                   />
