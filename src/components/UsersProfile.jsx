@@ -111,7 +111,7 @@ const UserProfile = () => {
                   />
                   ) : (
                   <img
-                    src={`http://localhost:3000/img/${user.photo}`}
+                    src={`${import.meta.env.VITE_BUCKET_URL}${user.photo}`}
                     alt="User Avatar"
                     className="user-avatar circular-image"
                   />
@@ -147,7 +147,7 @@ const UserProfile = () => {
                   />
                   ) : (
                   <img
-                    src={`http://localhost:3000/img/${user.photo}`}
+                    src={`${import.meta.env.VITE_BUCKET_URL}${user.photo}`}
                     alt="User Avatar"
                     className="user-avatar circular-image"
                   />
