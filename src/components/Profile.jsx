@@ -148,7 +148,7 @@ function Profile() {
                   />
                   ) : (
                   <img
-                    src={`${import.meta.env.VITE_API_URL}img/${user.photo}`}
+                    src={`${import.meta.env.VITE_BUCKET_URL}${user.photo}`}
                     alt="User Avatar"
                     className="user-avatar circular-image"
                   />
