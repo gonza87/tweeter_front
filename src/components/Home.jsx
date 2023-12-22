@@ -30,9 +30,9 @@ const TweetList = () => {
   console.log("user id: " + userTokenId);
   //console.log("username: "+ username)
 
-  const apiUrl = "http://localhost:3000/tweet";
+  const apiUrl = `${VITE_API_URLITE_API_URL}/tweet`//"http://localhost:3000/tweet";
 
-  const createTweetUrl = "http://localhost:3000/tweet";
+  const createTweetUrl = `${VITE_API_URLITE_API_URL}/tweet`//"http://localhost:3000/tweet";
 
   const config = {
     headers: {
