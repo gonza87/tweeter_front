@@ -105,7 +105,7 @@ function Profile() {
             <div className="portada">
               <img
                 className="portada"
-                src={`${import.meta.env.VITE_API_URL}public/Rectangle 8.png`} //"/public/Rectangle 8.png"
+                src="/Rectangle 8.png"
                 alt="portadaImg"
               />
             </div>
