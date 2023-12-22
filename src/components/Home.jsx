@@ -231,7 +231,7 @@ const TweetList = () => {
                   />
                   ) : (
                   <img
-                    src={`http://localhost:3000/img/${tweet.user.photo}`}
+                    src={`https://tweeter-api-one.vercel.app/${tweet.user.photo}`}//{`http://localhost:3000/img/${tweet.user.photo}`}
                     alt="User Avatar"
                     className="user-avatar circular-image"
                   />
@@ -256,7 +256,7 @@ const TweetList = () => {
                           icon={faHeart}
                           className="action-icon left"
                           onClick={() => {
-                            const likeUrl = `http://localhost:3000/tweet/${tweet.id}/likes`;
+                            const likeUrl = `https://tweeter-api-one.vercel.app/tweet/${tweet.id}/likes`;//`http://localhost:3000/tweet/${tweet.id}/likes`;
                             const requestBody = {
                               userId: userTokenId,
                             };
