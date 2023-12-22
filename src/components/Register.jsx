@@ -16,7 +16,7 @@ function Register() {
     file: null,
   });
 
-  const apiUrl = "http://localhost:3000/users";
+  const apiUrl = "https://tweeter-api-gamma.vercel.app/users";
 
   const handleChange = (event) => {
     const { name, value, files } = event.target;
@@ -200,7 +200,7 @@ function Register() {
           <div className="pp">
             Already have an account?
             <a>
-              <Link className="link" to={`${import.meta.env.VITE_API_URL}/login`}>
+              <Link className="link" to="/login">
                 Sign in
               </Link>
             </a>
