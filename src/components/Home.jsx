@@ -231,7 +231,7 @@ const TweetList = () => {
                   />
                   ) : (
                   <img
-                    src={`${import.meta.envVITE_BUCKET_URL}${tweet.user.photo}`}//`http://localhost:3000/img/${tweet.user.photo}`}
+                    src={`${import.meta.env.VITE_BUCKET_URL}${tweet.user.photo}`}//`http://localhost:3000/img/${tweet.user.photo}`}
                     alt="User Avatar"
                     className="user-avatar circular-image"
                   />
