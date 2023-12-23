@@ -137,4 +137,9 @@
     position: static;
     padding-top: 0;
   }
+
+  .tweet-info {
+    
+    font-size: small;
+}
 }
